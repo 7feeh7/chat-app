@@ -1,11 +1,11 @@
 import express from "express";
+import http from "http";
+import { Server } from "socket.io";
 
 const app = express();
 
-app.get("/", (request, response) => {
-    return response.status(200).json({
-        message: "welcome to chat-app" 
-    });
-});
+const serverHttp = http.createServer(app);
 
-export { app };
+const io = new Server(serverHttp, { cors: { origin: "*" } });
+
+export { serverHttp, io };

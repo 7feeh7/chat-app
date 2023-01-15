@@ -1,3 +1,5 @@
-import { app } from "./app";
+import { serverHttp } from "./app";
+import "dotenv/config";
+import "./websocket";
 
-app.listen(3333);
+serverHttp.listen(process.env.PORT || 3333);
